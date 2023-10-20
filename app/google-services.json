@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "360504502611",
+    "project_id": "flex-f72ad",
+    "storage_bucket": "flex-f72ad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:360504502611:android:93a3a6e2218fce72fad9a6",
+        "android_client_info": {
+          "package_name": "com.example.flex"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKhj61BIbE9zA0Z_2sWrdqMfkCczJuC7g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
