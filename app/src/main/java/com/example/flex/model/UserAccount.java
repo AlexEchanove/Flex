@@ -1,5 +1,8 @@
 package com.example.flex.model;
 
+import androidx.annotation.NonNull;
+
+import java.util.Objects;
 public class UserAccount {
 
     String email, username, password;
