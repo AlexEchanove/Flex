@@ -30,4 +30,47 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Update" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingVertical="10dp">
+
+
+        <Button
+            android:id="@+id/profileNav"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:backgroundTint="@color/scarlet"
+            android:layout_marginStart="40dp"
+            android:text="Profile"
+            android:textSize="10sp"
+            app:cornerRadius="0dp" />
+
+
+        <Button
+            android:id="@+id/workoutNav"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:backgroundTint="@color/scarlet"
+            android:layout_marginLeft="10dp"
+            android:text="Workouts"
+            android:textSize="10sp"
+            app:cornerRadius="0dp" />
+
+        <Button
+            android:id="@+id/feedNav"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:backgroundTint="@color/scarlet"
+            android:layout_marginLeft="10dp"
+            android:text="Feed"
+            android:textSize="10sp"
+            app:cornerRadius="0dp" />
+    </LinearLayout>
+
 </LinearLayout>
