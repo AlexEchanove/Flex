@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
                 DatabaseReference userReference = reference.child("users").child(usernameToUpdate);
                 userReference.child("email").setValue(newEmail).addOnCompleteListener(task -> {
+                    Toast.makeText(MainActivity.this, "Updated the user", Toast.LENGTH_SHORT).show();
                 });
             }
         });
