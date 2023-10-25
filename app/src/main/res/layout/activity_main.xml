@@ -10,6 +10,18 @@
     android:gravity="center"
     tools:context=".MainActivity">
 
+    <EditText
+        android:id="@+id/nameText"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/custom_edittext"
+        android:drawablePadding="8dp"
+        android:hint="Username"
+        android:padding="8dp"
+        android:textColor="@color/gray"
+        android:textColorHighlight="@color/cardview_dark_background" />
+
     <Button
         android:id="@+id/deleteButt"
         android:layout_width="match_parent"
@@ -24,50 +36,41 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="525dp">
+        android:layout_height="563dp">
 
     </FrameLayout>
 
-    <LinearLayout
+    <com.google.android.material.tabs.TabLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingVertical="10dp">
+        android:background="@color/gray"
+        android:layout_marginVertical="10dp"
+        app:tabIconTint="@color/white"
+        app:tabIndicator="@color/scarlet"
+        app:tabIndicatorColor="@color/scarlet"
+        app:tabTextColor="@color/white"
+        app:tabBackground="@color/gray">
 
-
-        <Button
-            android:id="@+id/profileNav"
-            android:layout_width="100dp"
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/profileButton"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
-            android:backgroundTint="@color/scarlet"
-            android:layout_marginStart="40dp"
-            android:text="Profile"
-            android:textSize="10sp"
-            app:cornerRadius="0dp" />
+            android:background="@color/gray"
+            android:text="Profile" />
 
-
-        <Button
-            android:id="@+id/workoutNav"
-            android:layout_width="100dp"
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/workoutButton"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
-            android:backgroundTint="@color/scarlet"
-            android:layout_marginLeft="10dp"
-            android:text="Workouts"
-            android:textSize="10sp"
-            app:cornerRadius="0dp" />
+            android:background="@color/gray"
+            android:text="Workouts" />
 
-        <Button
-            android:id="@+id/feedNav"
-            android:layout_width="100dp"
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/feedButton"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
-            android:backgroundTint="@color/scarlet"
-            android:layout_marginLeft="10dp"
-            android:text="Feed"
-            android:textSize="10sp"
-            app:cornerRadius="0dp" />
-    </LinearLayout>
+            android:background="@color/gray"
+            android:text="Feed" />
+    </com.google.android.material.tabs.TabLayout>
 
 </LinearLayout>
