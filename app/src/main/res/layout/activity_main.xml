@@ -10,33 +10,9 @@
     android:gravity="center"
     tools:context=".MainActivity">
 
-    <EditText
-        android:id="@+id/nameText"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/custom_edittext"
-        android:drawablePadding="8dp"
-        android:hint="Username"
-        android:padding="8dp"
-        android:textColor="@color/gray"
-        android:textColorHighlight="@color/cardview_dark_background" />
-
-    <Button
-        android:id="@+id/deleteButt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Delete" />
-
-    <Button
-        android:id="@+id/updateBut"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Update" />
-
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="563dp">
+        android:layout_height="653dp">
 
     </FrameLayout>
 
