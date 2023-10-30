@@ -93,47 +93,8 @@
                 android:text="Add Exercise"
                 android:textSize="20sp"
                 app:cornerRadius="50dp"/>
-            
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingVertical="10dp">
-
-
-                <Button
-                    android:id="@+id/deleteButton"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="0dp"
-                    android:backgroundTint="@color/scarlet"
-                    android:text="Delete Test"
-                    android:textSize="10sp"
-                    app:cornerRadius="50dp" />
-
-
-            <Button
-                android:id="@+id/replaceButton"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="0dp"
-                android:backgroundTint="@color/scarlet"
-                android:text="ReplaceTest"
-                android:textSize="10sp"
-                app:cornerRadius="50dp" />
-
-            <Button
-                android:id="@+id/updateButton"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="0dp"
-                android:backgroundTint="@color/scarlet"
-                android:text="Update Test "
-                android:textSize="10sp"
-                app:cornerRadius="50dp" />
-            </LinearLayout>
 
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
 
+    </androidx.cardview.widget.CardView>
 </LinearLayout>
