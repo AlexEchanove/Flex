@@ -24,69 +24,104 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     DatabaseReference reference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://flex-f72ad-default-rtdb.firebaseio.com");
+
+    TabLayout tabLayout;
+    ViewPager2 viewPager2;
+    MyViewPageAdapter myViewPageAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final EditText name    = findViewById(R.id.nameText);
-        final Button deleteBut = findViewById(R.id.deleteButt);
-        final Button updateBut = findViewById(R.id.updateBut);
+        tabLayout = findViewById(R.id.tabLayout);
+        viewPager2 = findViewById(R.id.viewLayout);
+        myViewPageAdapter = new MyViewPageAdapter(this);
+        viewPager2.setAdapter(myViewPageAdapter);
 
-
-        TabLayout tabLayout;
-
-        deleteBut.setOnClickListener(new View.OnClickListener() {
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
-            public void onClick(View view) {
-                final String usernameToDelete = name.getText().toString();
-                reference.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.hasChild(usernameToDelete)) {
-                            DatabaseReference userReference = reference.child("users").child(usernameToDelete);
-                            userReference.removeValue().addOnCompleteListener(task -> {
-                                Toast.makeText(MainActivity.this, "Deleted the user", Toast.LENGTH_SHORT).show();
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager2.setCurrentItem(tab.getPosition());
+            }
 
-                            });
-                        } else {
-                            Toast.makeText(MainActivity.this, "User doesn't exist", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
 
-                    }
-                });
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
 
             }
         });
 
-
-        updateBut.setOnClickListener(new View.OnClickListener() {
+        viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
-            public void onClick(View view) {
-                final String usernameToUpdate = name.getText().toString();
-                reference.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.hasChild(usernameToUpdate)) {
-                            String newEmail = "temp@email.com";
-                            DatabaseReference userReference = reference.child("users").child(usernameToUpdate);
-                            userReference.child("email").setValue(newEmail).addOnCompleteListener(task -> {
-                                Toast.makeText(MainActivity.this, "Updated the user", Toast.LENGTH_SHORT).show();
-                            });
-                        } else {
-                            Toast.makeText(MainActivity.this, "User doesn't exist", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                tabLayout.getTabAt(position).select();
             }
         });
+
     }
 }
+
+//        final EditText name    = findViewById(R.id.nameText);
+//        final Button deleteBut = findViewById(R.id.deleteButt);
+//        final Button updateBut = findViewById(R.id.updateBut);
+//
+//
+//        TabLayout tabLayout;
+//
+//        deleteBut.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                final String usernameToDelete = name.getText().toString();
+//                reference.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                        if (snapshot.hasChild(usernameToDelete)) {
+//                            DatabaseReference userReference = reference.child("users").child(usernameToDelete);
+//                            userReference.removeValue().addOnCompleteListener(task -> {
+//                                Toast.makeText(MainActivity.this, "Deleted the user", Toast.LENGTH_SHORT).show();
+//
+//                            });
+//                        } else {
+//                            Toast.makeText(MainActivity.this, "User doesn't exist", Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError error) {
+//
+//                    }
+//                });
+//
+//            }
+//        });
+//
+//
+//        updateBut.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                final String usernameToUpdate = name.getText().toString();
+//                reference.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                        if (snapshot.hasChild(usernameToUpdate)) {
+//                            String newEmail = "temp@email.com";
+//                            DatabaseReference userReference = reference.child("users").child(usernameToUpdate);
+//                            userReference.child("email").setValue(newEmail).addOnCompleteListener(task -> {
+//                                Toast.makeText(MainActivity.this, "Updated the user", Toast.LENGTH_SHORT).show();
+//                            });
+//                        } else {
+//                            Toast.makeText(MainActivity.this, "User doesn't exist", Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError error) {
+//
+//                    }
+//                });
+//
+//            }
+//        });
