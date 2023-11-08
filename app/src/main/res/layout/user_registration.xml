@@ -38,28 +38,28 @@
         android:textColorHint="#546E7A"
         android:autofillHints="username"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="start"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:text="Username"
-        android:textColor="#546E7A"
-        android:textSize="16sp" />
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="start"-->
+<!--        android:layout_marginLeft="16dp"-->
+<!--        android:layout_marginRight="16dp"-->
+<!--        android:text="Username"-->
+<!--        android:textColor="#546E7A"-->
+<!--        android:textSize="16sp" />-->
 
-    <EditText
-        android:id="@+id/username"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="8dp"
-        android:hint="Enter Username"
-        android:maxLines="1"
-        android:minHeight="48dp"
-        android:textColorHint="#546E7A"
-        android:autofillHints="username"/>
+<!--    <EditText-->
+<!--        android:id="@+id/username"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginLeft="16dp"-->
+<!--        android:layout_marginRight="16dp"-->
+<!--        android:layout_marginBottom="8dp"-->
+<!--        android:hint="Enter Username"-->
+<!--        android:maxLines="1"-->
+<!--        android:minHeight="48dp"-->
+<!--        android:textColorHint="#546E7A"-->
+<!--        android:autofillHints="username"/>-->
 
     <TextView
         android:layout_width="wrap_content"

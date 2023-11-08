@@ -3,13 +3,19 @@ package com.example.flex;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -21,53 +27,64 @@ public class Login extends AppCompatActivity {
 
     DatabaseReference reference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://flex-f72ad-default-rtdb.firebaseio.com");
 
+    FirebaseAuth uAuth;
+
+    private Button LoginBtn;
+    private EditText UserEmail, UserPassword;
+
+    private ProgressDialog loadingBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        final EditText username = findViewById(R.id.username);
-        final EditText password = findViewById(R.id.password);
-        final Button loginBtn = findViewById(R.id.loginButton);
+        uAuth = FirebaseAuth.getInstance();
+        loadingBar = new ProgressDialog(this);
+
+        UserEmail = (EditText) findViewById(R.id.email);
+        UserPassword = (EditText) findViewById(R.id.password);
+        LoginBtn = (Button) findViewById(R.id.loginButton);
         final Button registerBtn = findViewById(R.id.signupBtn);
 
-        loginBtn.setOnClickListener(new View.OnClickListener() {
+        LoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final String usernameTxt = username.getText().toString();
-                final String passwordTxt = password.getText().toString();
+                String email = UserEmail.getText().toString();
+                String password = UserPassword.getText().toString();
 
-                if(usernameTxt.isEmpty() || passwordTxt.isEmpty()) {
+                if(TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
                     Toast.makeText(Login.this, "Please enter username and password", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    reference.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            if (snapshot.hasChild(usernameTxt)) {
-                                final String getPassword = snapshot.child(usernameTxt).child("password").getValue(String.class);
 
-                                if (getPassword.equals(passwordTxt)) {
-                                    Toast.makeText(Login.this, "Successfully Logged In", Toast.LENGTH_SHORT).show();
-                                    startActivity(new Intent(Login.this, MainActivity.class));
-                                    finish();
-                                }
-                                else {
-                                    Toast.makeText(Login.this, "Wrong Password", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                            else {
-                                System.out.println(usernameTxt);
-                                Toast.makeText(Login.this, "Username Not Recognized", Toast.LENGTH_SHORT).show();
+                    loadingBar.setTitle("Authenticating User");
+                    loadingBar.setMessage("Please wait while we log you in");
+                    loadingBar.show();
+                    loadingBar.setCanceledOnTouchOutside(true);
 
-                            }
-                        }
+                    uAuth.signInWithEmailAndPassword(email, password)
+                                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<AuthResult> task) {
+                                            if (task.isSuccessful()) {
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
+                                                Intent mainIntent = new Intent(Login.this, MainActivity.class);
+                                                mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                                startActivity(mainIntent);
+                                                finish();
 
-                        }
-                    });
+                                                Toast.makeText(Login.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
+                                                loadingBar.dismiss();
+                                            }
+                                            else {
+                                                String message = task.getException().getMessage();
+                                                Toast.makeText(Login.this, "Error Occurred: " + message, Toast.LENGTH_SHORT).show();
+                                                loadingBar.dismiss();
+
+                                            }
+                                        }
+                                    });
                 }
             }
         });

@@ -10,7 +10,7 @@ public class Workout {
     }
 
     public Workout(String username, String email) {
-        this.username = username;
+//        this.username = username;
         this.email = email;
     }
 
