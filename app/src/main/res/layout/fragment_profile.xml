@@ -12,26 +12,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginVertical="20dp">
+        android:layout_marginTop="10dp">
 
         <Button
             android:id="@+id/cameraButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="18dp"
-            android:layout_marginVertical="10dp"
+            android:layout_marginHorizontal="50dp"
             android:backgroundTint="@color/scarlet"
             android:text="Disable Camera"
+            android:textSize="10dp"
             android:layout_gravity="center_horizontal"/>
 
         <Button
             android:id="@+id/locationButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginVertical="10dp"
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginTop="5dp"
             android:backgroundTint="@color/scarlet"
             android:text="Disable Location"
+            android:textSize="10dp"
             android:layout_gravity="center_horizontal"/>
     </LinearLayout>
 
@@ -40,18 +41,32 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/peripheralLayout"
         android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/imageView"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_gravity="center_horizontal"
-            android:src="@drawable/testpic"/>
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/profileImage"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/test_pic" />
+
+            <Button
+                android:id="@+id/photoButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/scarlet"
+                android:text="Camera"
+                android:layout_gravity="center_horizontal"/>
+
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/usernameLayout"
             android:layout_width="match_parent"
-            android:layout_height="75dp"
+            android:layout_height="50dp"
             android:orientation="horizontal"
             android:layout_marginVertical="5dp">
 
@@ -76,7 +91,7 @@
         <LinearLayout
             android:id="@+id/emailLayout"
             android:layout_width="match_parent"
-            android:layout_height="75dp"
+            android:layout_height="50dp"
             android:orientation="horizontal"
             android:layout_marginVertical="5dp">
 
@@ -101,7 +116,7 @@
         <LinearLayout
             android:id="@+id/passwordLayout"
             android:layout_width="match_parent"
-            android:layout_height="75dp"
+            android:layout_height="50dp"
             android:orientation="horizontal"
             android:layout_marginVertical="5dp">
 
@@ -123,25 +138,38 @@
 
         </LinearLayout>
 
-        <Button
-            android:id="@+id/updateButton"
+        <LinearLayout
+            android:id="@+id/crudLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/scarlet"
-            android:text="Update User"
-            android:textStyle="bold"
-            android:textSize="25dp"
-            android:layout_marginTop="5dp"/>
+            android:orientation="vertical"
+            android:layout_marginVertical="5dp">
+            <Button
+                android:id="@+id/updateButton"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/scarlet"
+                android:layout_marginHorizontal="0dp"
+                android:text="Update User"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"/>
 
-        <Button
-            android:id="@+id/deleteButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/scarlet"
-            android:text="Delete User"
-            android:textStyle="bold"
-            android:textSize="25dp"
-            android:layout_marginTop="20dp"/>
+            <Button
+                android:id="@+id/deleteButton"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/scarlet"
+                android:layout_marginHorizontal="10dp"
+                android:text="Delete User"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"/>
+        </LinearLayout>
+
+
     </LinearLayout>
 
 

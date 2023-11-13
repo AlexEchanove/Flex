@@ -20,7 +20,7 @@
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/testpic" />
+        android:src="@drawable/test_pic" />
 
     <TextView
         android:id="@+id/feed_text"
