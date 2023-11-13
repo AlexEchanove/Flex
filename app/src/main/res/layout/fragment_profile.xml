@@ -40,12 +40,12 @@
         android:layout_below="@id/peripheralLayout"
         android:orientation="vertical">
 
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:src="@tools:sample/avatars"
-            android:layout_gravity="center_horizontal" />
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/testpic"/>
 
         <LinearLayout
             android:id="@+id/usernameLayout"

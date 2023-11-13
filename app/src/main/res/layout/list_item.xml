@@ -19,13 +19,13 @@
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/gym_test_pic" />
+        android:src="@drawable/testpic" />
 
     <TextView
         android:id="@+id/feed_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="TEST TEST TEST TEST TEST TEST"
+        android:text="CUTE TEST TEST TEST TEST TEST"
         android:textColor="@color/black"
         android:textSize="16dp"
         android:textStyle="bold"
