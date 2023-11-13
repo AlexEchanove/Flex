@@ -55,7 +55,7 @@ public class SignUp extends AppCompatActivity {
             public void onClick(View view) {
 
                 String email = UserEmail.getText().toString();
-//                final String usernameTxt = username.getText().toString();
+//              final String usernameTxt = username.getText().toString();
                 String password = UserPassword.getText().toString();
                 String confPassword = UserConfirmPassword.getText().toString();
 
@@ -77,6 +77,11 @@ public class SignUp extends AppCompatActivity {
                                         @Override
                                         public void onComplete(@NonNull Task<AuthResult> task) {
                                             if (task.isSuccessful()) {
+
+                                                String username = getUsername(email);
+                                                reference.child("users").child(username).child("email").setValue(email);
+                                                reference.child("users").child(username).child("username").setValue(username);
+                                                reference.child("users").child(username).child("password").setValue(password);
 
                                                 sendUserToLogin();
 
@@ -131,6 +136,12 @@ public class SignUp extends AppCompatActivity {
         setupIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(setupIntent);
         finish();
+    }
+
+    private String getUsername(String email) {
+
+        return (email.substring(0, email.indexOf("@")));
+
     }
 
 }
