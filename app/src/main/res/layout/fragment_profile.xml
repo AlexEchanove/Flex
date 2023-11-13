@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.ProfileFragment">
+    tools:context=".fragments.ProfileFragment"
+    android:background="@color/gray" >
 
     <LinearLayout
         android:id="@+id/peripheralLayout"
@@ -50,7 +51,7 @@
         <LinearLayout
             android:id="@+id/usernameLayout"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="75dp"
             android:orientation="horizontal"
             android:layout_marginVertical="5dp">
 
@@ -59,21 +60,23 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:text="Username:"
-                android:textSize="25dp"/>
+                android:textSize="25dp"
+                android:textColor="@color/white"/>
 
             <EditText
                 android:id="@+id/editUsername"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="text" />
+                android:inputType="text"
+                android:textColor="@color/white"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/emailLayout"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="75dp"
             android:orientation="horizontal"
             android:layout_marginVertical="5dp">
 
@@ -82,21 +85,23 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:text="Email:"
-                android:textSize="25dp"/>
+                android:textSize="25dp"
+                android:textColor="@color/white"/>
 
             <EditText
                 android:id="@+id/editEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="text"/>
+                android:inputType="text"
+                android:textColor="@color/white"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/passwordLayout"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="75dp"
             android:orientation="horizontal"
             android:layout_marginVertical="5dp">
 
@@ -105,14 +110,16 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:text="Password:"
-                android:textSize="25dp"/>
+                android:textSize="25dp"
+                android:textColor="@color/white"/>
 
             <EditText
                 android:id="@+id/editPassword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="text" />
+                android:inputType="text"
+                android:textColor="@color/white"/>
 
         </LinearLayout>
 

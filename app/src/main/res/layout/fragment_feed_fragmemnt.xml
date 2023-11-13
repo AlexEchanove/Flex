@@ -5,19 +5,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.FeedFragment">
 
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Feed"
-        android:layout_centerInParent="true"
-        android:textSize="32dp"
-        tools:ignore="MissingConstraints" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/list_item" />
+        tools:listitem="@layout/list_item"
+        />
 
 </RelativeLayout>
