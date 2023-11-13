@@ -51,6 +51,10 @@ public class FeedFragment extends Fragment {
         data.add("Item 8");
         data.add("Item 9");
         data.add("Item 10");
+        data.add("Item 11");
+        data.add("Item 12");
+        data.add("Item 13");
+        data.add("Item 14");
         // Add more items as needed
         return data;
     }
