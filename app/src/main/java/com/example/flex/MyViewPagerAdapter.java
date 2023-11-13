@@ -22,9 +22,9 @@ public class MyViewPagerAdapter extends FragmentStateAdapter {
             case 0:
                 return new ProfileFragment();
             case 1:
-                return new FeedFragment();
-            case 2:
                 return new WorkoutFragment();
+            case 2:
+                return new FeedFragment();
             default:
                 return  new ProfileFragment();
         }
