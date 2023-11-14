@@ -80,7 +80,7 @@ public class WorkoutFragment extends Fragment implements View.OnClickListener {
 
             curr.setWeight(weightList);
             System.out.println(user);
-            reference.child("users").child(user.getEmail().substring(0, user.getEmail().indexOf("@"))).child(curr.getTimeOfWorkout().toString()).setValue(curr);
+            reference.child("users").child(user.getEmail().substring(0, user.getEmail().indexOf("@"))).child("workouts").child(curr.getTimeOfWorkout().toString()).setValue(curr);
         }
     }
 }

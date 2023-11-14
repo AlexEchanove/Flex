@@ -24,7 +24,6 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     DatabaseReference reference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://flex-f72ad-default-rtdb.firebaseio.com");
-
     TabLayout tabLayout;
     ViewPager2 viewPager2;
     MyViewPagerAdapter myViewPageAdapter;

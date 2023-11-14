@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:layout_gravity="top"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/gray">
 
     <TextView
         android:layout_width="wrap_content"
@@ -11,6 +13,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="8dp"
+        android:textColor="@color/white"
         android:text="New Account"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         />
@@ -22,7 +25,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:text="Email"
-        android:textColor="#546E7A"
+        android:textColor="@color/white"
         android:textSize="16sp" />
 
     <EditText
@@ -35,7 +38,8 @@
         android:hint="Enter Email"
         android:maxLines="1"
         android:minHeight="48dp"
-        android:textColorHint="#546E7A"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
         android:autofillHints="username"/>
 
 <!--    <TextView-->
@@ -68,7 +72,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:text="Password"
-        android:textColor="#546E7A"
+        android:textColor="@color/white"
         android:textSize="16sp" />
 
     <EditText
@@ -82,7 +86,8 @@
         android:inputType="textPassword"
         android:maxLines="1"
         android:minHeight="48dp"
-        android:textColorHint="#546E7A"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
         android:autofillHints="password"/>
 
     <TextView
@@ -93,7 +98,7 @@
         android:layout_marginRight="16dp"
         android:labelFor="@+id/password_confirm"
         android:text="Password"
-        android:textColor="#546E7A" />
+        android:textColor="@color/white" />
 
     <EditText
         android:id="@+id/password_confirm"
@@ -106,7 +111,8 @@
         android:inputType="textPassword"
         android:maxLines="1"
         android:minHeight="48dp"
-        android:textColorHint="#546E7A"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
         android:autofillHints="password"/>
 
     <Button
@@ -116,6 +122,9 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginRight="16dp"
+        android:backgroundTint="@color/scarlet"
+        android:textSize="20sp"
+        app:cornerRadius="50dp"
         android:text="Create" />
 
     <Button
@@ -125,5 +134,8 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="8dip"
         android:layout_marginRight="16dp"
+        android:backgroundTint="@color/scarlet"
+        android:textSize="20sp"
+        app:cornerRadius="50dp"
         android:text="Exit" />
 </LinearLayout>

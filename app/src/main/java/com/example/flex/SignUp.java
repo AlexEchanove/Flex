@@ -35,6 +35,8 @@ public class SignUp extends AppCompatActivity {
     private EditText UserEmail, UserPassword, UserConfirmPassword;
     private Button CreateAccBtn;
 
+    private String userJoined = "User Just Joined! :)";
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_registration);
@@ -82,7 +84,7 @@ public class SignUp extends AppCompatActivity {
                                                 reference.child("users").child(username).child("email").setValue(email);
                                                 reference.child("users").child(username).child("username").setValue(username);
                                                 reference.child("users").child(username).child("password").setValue(password);
-
+                                                reference.child("users").child(username).child("workouts").child("1").setValue(userJoined);
                                                 sendUserToLogin();
 
                                                 Toast.makeText(SignUp.this, "User Authenticated Successfully", Toast.LENGTH_SHORT).show();
