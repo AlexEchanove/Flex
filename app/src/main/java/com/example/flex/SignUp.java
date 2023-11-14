@@ -24,6 +24,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Date;
+
 public class SignUp extends AppCompatActivity {
 
     DatabaseReference reference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://flex-f72ad-default-rtdb.firebaseio.com");
@@ -36,6 +38,8 @@ public class SignUp extends AppCompatActivity {
     private Button CreateAccBtn;
 
     private String userJoined = "User Just Joined! :)";
+
+    private Date timeOfCreation = new Date();
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,7 +88,7 @@ public class SignUp extends AppCompatActivity {
                                                 reference.child("users").child(username).child("email").setValue(email);
                                                 reference.child("users").child(username).child("username").setValue(username);
                                                 reference.child("users").child(username).child("password").setValue(password);
-                                                reference.child("users").child(username).child("workouts").child("1").setValue(userJoined);
+                                                reference.child("users").child(username).child("workouts").child(timeOfCreation.toString()).setValue(userJoined);
                                                 sendUserToLogin();
 
                                                 Toast.makeText(SignUp.this, "User Authenticated Successfully", Toast.LENGTH_SHORT).show();
