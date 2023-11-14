@@ -4,7 +4,8 @@
     android:id="@+id/workoutFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.WorkoutFragment">
+    tools:context=".fragments.WorkoutFragment"
+    android:background="@color/gray">
 
     <Button
         android:id="@+id/addBtn"
@@ -14,6 +15,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="43dp"
         android:layout_marginTop="83dp"
+        android:backgroundTint="@color/scarlet"
         android:text="Add Exercise" />
 
     <Button
@@ -24,6 +26,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="225dp"
         android:layout_marginTop="81dp"
+        android:backgroundTint="@color/scarlet"
         android:text="Save" />
 
     <LinearLayout
@@ -42,7 +45,9 @@
             android:layout_height="45dp"
             android:ems="10"
             android:inputType="text"
-            android:hint="Activity" />
+            android:hint="Activity"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"/>
     </LinearLayout>
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -60,7 +65,9 @@
             android:layout_height="45dp"
             android:ems="10"
             android:inputType="text"
-            android:hint="Reps" />
+            android:hint="Reps"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"/>
     </LinearLayout>
     <LinearLayout
         android:id="@+id/linearLayout3"
@@ -78,6 +85,8 @@
             android:layout_height="45dp"
             android:ems="10"
             android:inputType="text"
-            android:hint="weight" />
+            android:hint="weight"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"/>
     </LinearLayout>
 </RelativeLayout>

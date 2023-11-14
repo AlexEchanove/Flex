@@ -40,6 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/viewLayout"
-        android:layout_below="@id/tabLayout" />
+        android:layout_below="@id/tabLayout"
+        android:background="@color/gray"/>
 
 </RelativeLayout>

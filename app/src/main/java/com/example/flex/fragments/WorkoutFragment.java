@@ -79,7 +79,8 @@ public class WorkoutFragment extends Fragment implements View.OnClickListener {
             weightList.add(weight.getText().toString());
 
             curr.setWeight(weightList);
-            reference.child("workouts").child(user.getUid()).child(curr.getTimeOfWorkout().toString()).setValue(curr);
+            System.out.println(user);
+            reference.child("users").child(user.getEmail().substring(0, user.getEmail().indexOf("@"))).child("workouts").child(curr.getTimeOfWorkout().toString()).setValue(curr);
         }
     }
 }
