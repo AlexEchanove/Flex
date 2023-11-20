@@ -1,5 +1,6 @@
 package com.example.flex.fragments;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -29,14 +30,14 @@ public class WorkoutFragment extends Fragment implements View.OnClickListener {
 
     Button addBtn;
     Button saveBtn;
-    LinearLayout mLayout;
+    LinearLayout mLayout,mLayout2,mLayout3;
 
     private DatabaseReference reference;
     FirebaseUser user;
 
-    private EditText activity, reps, weight;
+    private ArrayList<EditText>  activity, reps, weight;
 
-
+    int cnt;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -47,40 +48,76 @@ public class WorkoutFragment extends Fragment implements View.OnClickListener {
         saveBtn = (Button) v.findViewById(R.id.saveBtn);
         saveBtn.setOnClickListener(this);
         mLayout = (LinearLayout) v.findViewById(R.id.linearLayout);
-        activity = (EditText) v.findViewById(R.id.activityText1);
-        reps = (EditText) v.findViewById(R.id.repsText1);
-        weight = (EditText) v.findViewById(R.id.weightText1);
+        mLayout2 = (LinearLayout) v.findViewById(R.id.linearLayout2);
+        mLayout3 = (LinearLayout) v.findViewById(R.id.linearLayout3);
+        activity = new ArrayList<EditText>();
+        reps = new ArrayList<EditText>();
+        weight = new ArrayList<EditText>();
         reference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://flex-f72ad-default-rtdb.firebaseio.com");
         user = FirebaseAuth.getInstance().getCurrentUser();
+        cnt = 0;
         return v;
     }
 
     @Override
     public void onClick(View view) {
+
         if(view.getId() == R.id.addBtn) {
-        /* textCnt++;
-        EditText editText = new EditText(getContext());
-        editText.setLayoutParams(new
-                LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
-                45));
-        editText.setPadding(0,textCnt*60,0,0);
-        mLayout.addView(editText); */
+            generateTextFields();
+
         } else if (view.getId() == R.id.saveBtn) {
             Workout curr = new Workout();
             curr.setUser(user.getUid());
             curr.setTimeOfWorkout(new Date());
             ArrayList<String> exercises = new ArrayList<>(); //have to add text boxes to fill the lists
-            exercises.add(activity.getText().toString());
-            curr.setExercise(exercises);
             ArrayList<String> repsList = new ArrayList<>();
-            repsList.add(reps.getText().toString());
-            curr.setReps(repsList);
             ArrayList<String> weightList = new ArrayList<>();
-            weightList.add(weight.getText().toString());
+            int i = 0;
 
+            while(i< activity.size()){
+                EditText currAct = activity.get(i);
+                EditText currWeight = weight.get(i);
+                EditText currReps = reps.get(i);
+                exercises.add(currAct.getText().toString());
+                repsList.add(currReps.getText().toString());
+                weightList.add(currWeight.getText().toString());
+                i++;
+            }
+
+            curr.setExercise(exercises);
+            curr.setReps(repsList);
             curr.setWeight(weightList);
-            System.out.println(user);
             reference.child("users").child(user.getEmail().substring(0, user.getEmail().indexOf("@"))).child("workouts").child(curr.getTimeOfWorkout().toString()).setValue(curr);
         }
+    }
+    public void generateTextFields(){
+        cnt++;
+        if(cnt < 10) {
+            EditText editText  = new EditText(getContext());
+            editText = setFormatting(editText, "Activity");
+            editText.setId((cnt*3) - 2);
+            activity.add(editText);
+            mLayout.addView(editText);
+            editText  = new EditText(getContext());
+            editText = setFormatting(editText, "Reps");
+            editText.setId((cnt*3) - 1);
+            reps.add(editText);
+            mLayout2.addView(editText);
+            editText  = new EditText(getContext());
+            editText = setFormatting(editText, "Weight");
+            editText.setId(cnt*3);
+            weight.add(editText);
+            mLayout3.addView(editText);
+        }
+    }
+    public EditText setFormatting(EditText currText, String hint){
+        currText.setLayoutParams(new
+                LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+                60));
+        currText.setTextColor(Color.WHITE);
+        currText.setHintTextColor(Color.WHITE);
+        currText.setEms(10);
+        currText.setHint(hint);
+        return currText;
     }
 }
