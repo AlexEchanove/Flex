@@ -22,7 +22,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.lang.ref.Reference;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
 public class FeedFragment extends Fragment {
@@ -30,7 +34,7 @@ public class FeedFragment extends Fragment {
     FirebaseUser user;
     RecyclerView recyclerView;
     Adapter adapter;
-
+    private String userJoined = "User Just Joined! :)";
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -43,6 +47,7 @@ public class FeedFragment extends Fragment {
         getData(reference, new OnGetDataListener() {
             @Override
             public void onSuccess(List<String> data) {
+                Collections.shuffle(data);
                 adapter = new Adapter(data);
                 recyclerView.setAdapter(adapter);
             }
@@ -59,7 +64,30 @@ public class FeedFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     String username = snapshot.child("username").getValue(String.class);
-                    data.add(username);
+                    DataSnapshot workoutsSnapshot = snapshot.child("workouts");
+                    for (DataSnapshot nextShot : workoutsSnapshot.getChildren()) {
+                        if (!nextShot.hasChild("exercise")) {
+                            data.add(username + "\n" + userJoined);
+                        } else {
+                            String exercise = "";
+                            String reps     = "";
+                            String weight   = "";
+                            DataSnapshot exerciseSnapshot = nextShot.child("exercise");
+                            for (DataSnapshot exerciseShot : exerciseSnapshot.getChildren()) {
+                                exercise = exerciseShot.getValue(String.class);
+                            }
+                            DataSnapshot repSnapshot = nextShot.child("reps");
+                            for (DataSnapshot repShot : repSnapshot.getChildren()) {
+                                reps = repShot.getValue(String.class);
+                            }
+                            DataSnapshot weightSnapshot = nextShot.child("weight");
+                            for (DataSnapshot weightShot : weightSnapshot.getChildren()) {
+                                weight = weightShot.getValue(String.class);
+                            }
+                            data.add(username + "\nExercise: " + exercise + "\nReps: " + reps + "\nWeight: " + weight);
+
+                        }
+                    }
                 }
                 listener.onSuccess(data);
             }

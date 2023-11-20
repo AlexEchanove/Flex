@@ -22,6 +22,10 @@ import android.widget.Toast;
 import com.example.flex.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.android.material.imageview.ShapeableImageView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class ProfileFragment extends Fragment {
     private static final int CAMERA_REQUEST_CODE = 1;
@@ -31,6 +35,8 @@ public class ProfileFragment extends Fragment {
     private Button cameraEnableFeature;
 
     FirebaseAuth uAuth;
+    DatabaseReference reference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://flex-f72ad-default-rtdb.firebaseio.com");
+
 
     private Button UpdateBtn, DeleteBtn;
     private EditText UserEmail, Username, UserPassword;
@@ -102,13 +108,30 @@ public class ProfileFragment extends Fragment {
                 String username = Username.getText().toString();
                 String userPassword = UserPassword.getText().toString();
 
-                if(!TextUtils.isEmpty(email) && TextUtils.isEmpty(username)) {
+                if (!TextUtils.isEmpty(email) && TextUtils.isEmpty(username) && TextUtils.isEmpty(userPassword)) {
+                    uAuth.getCurrentUser().updateEmail(email);
+                    Toast.makeText(getActivity(), "Successfully updated email", Toast.LENGTH_SHORT).show();
+                } else if (TextUtils.isEmpty(email) && !TextUtils.isEmpty(username) && TextUtils.isEmpty(userPassword)) {
+//                    reference.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
+//                        @Override
+//                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                            if (snapshot.hasChild(usernameToUpdate)) {
+//                                String newEmail = "temp@email.com";
+//                                DatabaseReference userReference = reference.child("users").child(usernameToUpdate);
+//                                userReference.child("email").setValue(newEmail).addOnCompleteListener(task -> {
+//                                    Toast.makeText(getActivity(), "Updated the user", Toast.LENGTH_SHORT).show();
+//                                });
+//                            } else {
+//                                Toast.makeText(getActivity(), "User doesn't exist", Toast.LENGTH_SHORT).show();
+//                            }
+//                        }
+//
+//                });
 
-//                    Toast.makeText(Login.this, "Please enter username and password", Toast.LENGTH_SHORT).show();
+
+
                 }
-
             }
         });
-
     }
 }
