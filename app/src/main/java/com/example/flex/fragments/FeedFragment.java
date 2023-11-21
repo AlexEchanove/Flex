@@ -69,22 +69,29 @@ public class FeedFragment extends Fragment {
                         if (!nextShot.hasChild("exercise")) {
                             data.add(username + "\n" + userJoined);
                         } else {
-                            String exercise = "";
-                            String reps     = "";
-                            String weight   = "";
+                            List<String> exercise = new ArrayList<>();
+                            List<String> reps = new ArrayList<>();
+                            List<String> weight = new ArrayList<>();
                             DataSnapshot exerciseSnapshot = nextShot.child("exercise");
                             for (DataSnapshot exerciseShot : exerciseSnapshot.getChildren()) {
-                                exercise = exerciseShot.getValue(String.class);
+                                exercise.add(exerciseShot.getValue(String.class));
                             }
                             DataSnapshot repSnapshot = nextShot.child("reps");
                             for (DataSnapshot repShot : repSnapshot.getChildren()) {
-                                reps = repShot.getValue(String.class);
+                                reps.add(repShot.getValue(String.class));
                             }
                             DataSnapshot weightSnapshot = nextShot.child("weight");
                             for (DataSnapshot weightShot : weightSnapshot.getChildren()) {
-                                weight = weightShot.getValue(String.class);
+                                weight.add(weightShot.getValue(String.class));
                             }
-                            data.add(username + "\nExercise: " + exercise + "\nReps: " + reps + "\nWeight: " + weight);
+                            int size = exercise.size();
+                            String workout = "Exercise:\t\tReps:\t\tWeight:\n";
+                            for(int count = 0; count < size; count++){
+                                workout = workout + exercise.get(count) + "\t\t\t\t\t"
+                                        + reps.get(count) + "\t\t\t\t\t" + weight.get(count) + "\n";
+                            }
+
+                            data.add(workout);
 
                         }
                     }
