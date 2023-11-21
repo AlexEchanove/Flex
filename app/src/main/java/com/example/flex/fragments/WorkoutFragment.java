@@ -113,7 +113,7 @@ public class WorkoutFragment extends Fragment implements View.OnClickListener {
     public EditText setFormatting(EditText currText, String hint){
         currText.setLayoutParams(new
                 LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
-                60));
+                150));
         currText.setTextColor(Color.WHITE);
         currText.setHintTextColor(Color.WHITE);
         currText.setEms(10);
