@@ -89,6 +89,7 @@ public class SignUp extends AppCompatActivity {
                                                 reference.child("users").child(username).child("username").setValue(username);
                                                 reference.child("users").child(username).child("password").setValue(password);
                                                 reference.child("users").child(username).child("workouts").child(timeOfCreation.toString()).setValue(userJoined);
+                                                reference.child("users").child(username).child("profilePic").setValue("https://github.com/AlexEchanove/Flex/blob/b8d4ae8b7256bec76a5958f25e8b36104eafd456/app/src/main/res/drawable/test_pic.jpeg");
                                                 sendUserToLogin();
 
                                                 Toast.makeText(SignUp.this, "User Authenticated Successfully", Toast.LENGTH_SHORT).show();
