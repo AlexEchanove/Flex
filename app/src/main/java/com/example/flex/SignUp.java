@@ -71,10 +71,10 @@ public class SignUp extends AppCompatActivity {
                 else if(!password.equals(confPassword)) {
                     Toast.makeText(SignUp.this, "Passwords are not matching", Toast.LENGTH_SHORT).show();
                 }
-                else if (UserAccount.checkPasswordForCapitalLetters(password)) {
+                else if (!UserAccount.checkPasswordForCapitalLetters(password)) {
                     Toast.makeText(SignUp.this, "Email must contain a capital letter and or digit", Toast.LENGTH_SHORT).show();
                 }
-                else if (UserAccount.checkEmailForAtSymbol(email)) {
+                else if (!UserAccount.checkEmailForAtSymbol(email)) {
                     Toast.makeText(SignUp.this, "Must be valid email", Toast.LENGTH_SHORT).show();
                 }
                 else {
