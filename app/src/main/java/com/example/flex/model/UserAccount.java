@@ -36,4 +36,23 @@ public class UserAccount {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public static boolean checkPasswordForCapitalLetters(@NonNull String password) {
+        boolean iCheck = false;
+        boolean cCheck = false;
+        for (char c : password.toCharArray()) {
+            if (Character.isUpperCase(c)) {
+                cCheck = true;
+            }
+            if (Character.isDigit(c)) {
+                iCheck = true;
+            }
+        }
+        if (cCheck && iCheck) { return true; }
+        return false;
+    }
+
+    public static boolean checkEmailForAtSymbol(@NonNull String email) {
+        return (email.contains("@") && email.contains(".com"));
+    }
 }
