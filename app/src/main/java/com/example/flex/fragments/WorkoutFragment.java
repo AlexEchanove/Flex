@@ -66,28 +66,7 @@ public class WorkoutFragment extends Fragment implements View.OnClickListener {
             generateTextFields();
 
         } else if (view.getId() == R.id.saveBtn) {
-            Workout curr = new Workout();
-            curr.setUser(user.getUid());
-            curr.setTimeOfWorkout(new Date());
-            ArrayList<String> exercises = new ArrayList<>(); //have to add text boxes to fill the lists
-            ArrayList<String> repsList = new ArrayList<>();
-            ArrayList<String> weightList = new ArrayList<>();
-            int i = 0;
-
-            while(i< activity.size()){
-                EditText currAct = activity.get(i);
-                EditText currWeight = weight.get(i);
-                EditText currReps = reps.get(i);
-                exercises.add(currAct.getText().toString());
-                repsList.add(currReps.getText().toString());
-                weightList.add(currWeight.getText().toString());
-                i++;
-            }
-
-            curr.setExercise(exercises);
-            curr.setReps(repsList);
-            curr.setWeight(weightList);
-            reference.child("users").child(user.getEmail().substring(0, user.getEmail().indexOf("@"))).child("workouts").child(curr.getTimeOfWorkout().toString()).setValue(curr);
+            saveWorkout(getTexts());
         }
     }
     public void generateTextFields(){
@@ -119,5 +98,32 @@ public class WorkoutFragment extends Fragment implements View.OnClickListener {
         currText.setEms(10);
         currText.setHint(hint);
         return currText;
+    }
+    public Workout getTexts(){
+        Workout curr = new Workout();
+        curr.setUser(user.getUid());
+        curr.setTimeOfWorkout(new Date());
+        ArrayList<String> exercises = new ArrayList<>(); //have to add text boxes to fill the lists
+        ArrayList<String> repsList = new ArrayList<>();
+        ArrayList<String> weightList = new ArrayList<>();
+        int i = 0;
+
+        while(i< activity.size()){
+            EditText currAct = activity.get(i);
+            EditText currWeight = weight.get(i);
+            EditText currReps = reps.get(i);
+            exercises.add(currAct.getText().toString());
+            repsList.add(currReps.getText().toString());
+            weightList.add(currWeight.getText().toString());
+            i++;
+        }
+
+        curr.setExercise(exercises);
+        curr.setReps(repsList);
+        curr.setWeight(weightList);
+        return curr;
+    }
+    public void saveWorkout(Workout curr){
+        reference.child("users").child(user.getEmail().substring(0, user.getEmail().indexOf("@"))).child("workouts").child(curr.getTimeOfWorkout().toString()).setValue(curr);
     }
 }
