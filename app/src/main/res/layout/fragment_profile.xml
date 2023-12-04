@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.ProfileFragment"
-    android:background="@color/gray" >
+    android:background="@color/white" >
 
     <!--    <LinearLayout-->
     <!--        android:id="@+id/peripheralLayout"-->
@@ -98,7 +98,7 @@
                 android:textSize="25dp"
                 android:layout_marginLeft="10dp"
                 android:textStyle="bold"
-                android:textColor="@color/white"/>
+                android:textColor="@color/black"/>
 
             <EditText
                 android:id="@+id/editUsername"
@@ -125,7 +125,7 @@
                 android:textSize="25dp"
                 android:layout_marginLeft="10dp"
                 android:textStyle="bold"
-                android:textColor="@color/white"/>
+                android:textColor="@color/black"/>
 
             <EditText
                 android:id="@+id/editEmail"
@@ -152,7 +152,7 @@
                 android:textSize="25dp"
                 android:layout_marginLeft="10dp"
                 android:textStyle="bold"
-                android:textColor="@color/white"/>
+                android:textColor="@color/black"/>
 
             <EditText
                 android:id="@+id/editPassword"
