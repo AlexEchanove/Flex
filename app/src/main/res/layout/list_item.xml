@@ -10,9 +10,9 @@
     android:layout_marginHorizontal="8dp"
     android:background="@color/white"
     android:foreground="?android:attr/selectableItemBackground"
-    android:backgroundTint="@color/gray">
+    android:backgroundTint="@color/white">
 
-    <com.google.android.material.imageview.ShapeableImageView
+    <ImageView
         android:id="@+id/title_image"
         android:layout_width="100dp"
         android:layout_height="100dp"
@@ -22,12 +22,22 @@
         app:layout_constraintTop_toTopOf="parent"
         android:src="@drawable/test_pic" />
 
+<!--    <com.google.android.material.imageview.ShapeableImageView-->
+<!--        android:id="@+id/title_image"-->
+<!--        android:layout_width="100dp"-->
+<!--        android:layout_height="100dp"-->
+<!--        android:adjustViewBounds="true"-->
+<!--        android:scaleType="centerCrop"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        android:src="@drawable/test_pic" />-->
+
     <TextView
         android:id="@+id/feed_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="TEST"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="16dp"
         android:textStyle="bold"
         android:layout_marginStart="16dp"

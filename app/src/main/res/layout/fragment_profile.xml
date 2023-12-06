@@ -5,38 +5,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.ProfileFragment"
-    android:background="@color/gray" >
+    android:background="@color/white" >
+
+    <!--    <LinearLayout-->
+    <!--        android:id="@+id/peripheralLayout"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:orientation="horizontal"-->
+    <!--        android:layout_marginTop="10dp">-->
+
+    <!--        <Button-->
+    <!--            android:id="@+id/cameraButton"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginHorizontal="50dp"-->
+    <!--            android:backgroundTint="@color/scarlet"-->
+    <!--            android:text="Disable Camera"-->
+    <!--            android:textSize="10dp"-->
+    <!--            android:layout_gravity="center_horizontal"/>-->
+
+    <!--        -->
+    <!--    </LinearLayout>-->
 
     <LinearLayout
         android:id="@+id/peripheralLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp">
-
-        <Button
-            android:id="@+id/cameraButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="50dp"
-            android:backgroundTint="@color/scarlet"
-            android:text="Disable Camera"
-            android:textSize="10dp"
-            android:layout_gravity="center_horizontal"/>
-
-        <Button
-            android:id="@+id/locationButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="12dp"
-            android:layout_marginTop="5dp"
-            android:backgroundTint="@color/scarlet"
-            android:text="Disable Location"
-            android:textSize="10dp"
-            android:layout_gravity="center_horizontal"/>
-    </LinearLayout>
-
-    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/peripheralLayout"
@@ -46,20 +38,50 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/profileImage"
-                android:layout_width="250dp"
-                android:layout_height="250dp"
-                android:layout_gravity="center_horizontal"
-                android:src="@drawable/test_pic" />
+            <!--            <com.google.android.material.imageview.ShapeableImageView-->
+            <!--                android:id="@+id/profileImage"-->
+            <!--                android:layout_width="250dp"-->
+            <!--                android:layout_height="250dp"-->
+            <!--                android:layout_gravity="center_horizontal"-->
+            <!--                android:src="@drawable/test_pic" />-->
 
-            <Button
-                android:id="@+id/photoButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/scarlet"
-                android:text="Camera"
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
                 android:layout_gravity="center_horizontal"/>
+
+<!--            app:srcCompat="@drawable/baseline_add_photo_alternate_24"-->
+
+
+            <LinearLayout
+                android:id="@+id/cameraLayout"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:layout_marginVertical="5dp">
+
+                <Button
+                    android:id="@+id/cameraButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/scarlet"
+                    android:text="Camera"
+                    android:layout_marginLeft="65dp"
+                    android:layout_gravity="center"/>
+
+
+                <Button
+                    android:id="@+id/galleryButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/scarlet"
+                    android:text="Gallery"
+                    android:layout_marginLeft="40dp"
+                    android:layout_gravity="center"/>
+
+
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -76,7 +98,9 @@
                 android:layout_height="wrap_content"
                 android:text="Username:"
                 android:textSize="25dp"
-                android:textColor="@color/white"/>
+                android:layout_marginLeft="10dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
 
             <EditText
                 android:id="@+id/editUsername"
@@ -84,7 +108,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="text"
-                android:textColor="@color/white"/>
+                android:textColor="@color/black"/>
 
         </LinearLayout>
 
@@ -101,7 +125,9 @@
                 android:layout_height="wrap_content"
                 android:text="Email:"
                 android:textSize="25dp"
-                android:textColor="@color/white"/>
+                android:layout_marginLeft="10dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
 
             <EditText
                 android:id="@+id/editEmail"
@@ -109,7 +135,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="text"
-                android:textColor="@color/white"/>
+                android:textColor="@color/black"/>
 
         </LinearLayout>
 
@@ -126,7 +152,9 @@
                 android:layout_height="wrap_content"
                 android:text="Password:"
                 android:textSize="25dp"
-                android:textColor="@color/white"/>
+                android:layout_marginLeft="10dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
 
             <EditText
                 android:id="@+id/editPassword"
@@ -134,45 +162,52 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="text"
-                android:textColor="@color/white"/>
+                android:textColor="@color/black"/>
 
         </LinearLayout>
 
+<!--        <Button-->
+<!--            android:id="@+id/locationButton"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginHorizontal="12dp"-->
+<!--            android:layout_marginTop="5dp"-->
+<!--            android:backgroundTint="@color/scarlet"-->
+<!--            android:text="Disable Location"-->
+<!--            android:textSize="20dp"-->
+<!--            android:layout_gravity="center_horizontal"/>-->
+
         <LinearLayout
-            android:id="@+id/crudLayout"
+            android:id="@+id/updateUserLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
             android:layout_marginVertical="5dp">
+
             <Button
                 android:id="@+id/updateButton"
-                android:layout_width="200dp"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/scarlet"
-                android:layout_marginHorizontal="0dp"
+                android:layout_marginHorizontal="15dp"
                 android:text="Update User"
                 android:textStyle="bold"
-                android:textSize="20dp"
-                android:layout_gravity="center_horizontal"
+                android:textSize="15dp"
                 android:layout_marginTop="5dp"/>
 
             <Button
                 android:id="@+id/deleteButton"
-                android:layout_width="200dp"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/scarlet"
-                android:layout_marginHorizontal="10dp"
+                android:layout_marginHorizontal="15dp"
                 android:text="Delete User"
                 android:textStyle="bold"
-                android:textSize="20dp"
-                android:layout_gravity="center_horizontal"
+                android:textSize="16dp"
                 android:layout_marginTop="5dp"/>
+
         </LinearLayout>
 
-
     </LinearLayout>
-
-
-
 
 </RelativeLayout>

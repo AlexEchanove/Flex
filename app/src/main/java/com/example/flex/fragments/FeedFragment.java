@@ -10,8 +10,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.flex.Adapter;
 import com.example.flex.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -34,6 +36,7 @@ public class FeedFragment extends Fragment {
     FirebaseUser user;
     RecyclerView recyclerView;
     Adapter adapter;
+
     private String userJoined = "User Just Joined! :)";
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -43,6 +46,7 @@ public class FeedFragment extends Fragment {
         recyclerView = view.findViewById(R.id.list_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         user = FirebaseAuth.getInstance().getCurrentUser();
+
 
         getData(reference, new OnGetDataListener() {
             @Override
@@ -85,7 +89,7 @@ public class FeedFragment extends Fragment {
                                 weight.add(weightShot.getValue(String.class));
                             }
                             int size = exercise.size();
-                            String workout = "Exercise:\t\tReps:\t\tWeight:\n";
+                            String workout = username + "\nExercise:\t\tReps:\t\tWeight:\n";
                             for(int count = 0; count < size; count++){
                                 workout = workout + exercise.get(count) + "\t\t\t\t\t"
                                         + reps.get(count) + "\t\t\t\t\t" + weight.get(count) + "\n";

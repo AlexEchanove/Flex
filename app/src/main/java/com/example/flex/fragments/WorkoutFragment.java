@@ -93,8 +93,8 @@ public class WorkoutFragment extends Fragment implements View.OnClickListener {
         currText.setLayoutParams(new
                 LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
                 150));
-        currText.setTextColor(Color.WHITE);
-        currText.setHintTextColor(Color.WHITE);
+        currText.setTextColor(Color.BLACK);
+        currText.setHintTextColor(Color.BLACK);
         currText.setEms(10);
         currText.setHint(hint);
         return currText;
