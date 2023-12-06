@@ -8,10 +8,21 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
 import java.util.List;
 
 public class Adapter extends RecyclerView.Adapter<ViewHolder> {
     List<String> data;
+
+    StorageReference storageReference = FirebaseStorage.getInstance().getReference();
+    private FirebaseAuth uAuth = FirebaseAuth.getInstance();
+
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://flex-f72ad-default-rtdb.firebaseio.com");
 
     public Adapter(List<String> data){
         this.data = data;
@@ -27,6 +38,8 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.textView.setText(data.get(position));
+        uAuth.getCurrentUser().getEmail();
+//        holder.imageView.setImageURI(storageReference.child("images/" + ));
     }
 
     @Override

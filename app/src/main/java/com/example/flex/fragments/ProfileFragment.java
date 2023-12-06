@@ -39,11 +39,15 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.google.firebase.storage.internal.StorageReferenceUri;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
@@ -93,6 +97,20 @@ public class ProfileFragment extends Fragment {
         Username = view.findViewById(R.id.editUsername);
         UserPassword = view.findViewById(R.id.editPassword);
 
+        DatabaseReference getPic = reference.child("users/" + username + "/profilePic");
+
+        getPic.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String link = snapshot.getValue(String.class);
+                Glide.with(getView()).load(link).placeholder(R.drawable.baseline_add_photo_alternate_24).into(imageView);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getActivity(), "Error Loading Image", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         cameraBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -214,6 +232,7 @@ public class ProfileFragment extends Fragment {
                                 Toast.makeText(getActivity(), "Image uploaded successfully", Toast.LENGTH_SHORT)
                                         .show();
                                 reference.child("users").child(username).child("profilePic").setValue(downloadUrl);
+                                reference.child("users").child(username).child("picName").setValue(fileName);
 
                             }
                         });
@@ -234,7 +253,8 @@ public class ProfileFragment extends Fragment {
                 progressDialog.show();
 
                 StorageReference storageRef = FirebaseStorage.getInstance().getReference();
-                StorageReference ref = storageRef.child("images/" + UUID.randomUUID().toString());
+                String picId = UUID.randomUUID().toString();
+                StorageReference ref = storageRef.child("images/" + picId);
 
                 Uri filePath = data.getData();
                 ref.putFile(filePath)
@@ -245,6 +265,7 @@ public class ProfileFragment extends Fragment {
 
                             progressDialog.dismiss();
                             Toast.makeText(getActivity(), "Image Uploaded!", Toast.LENGTH_SHORT).show();
+                            reference.child("users").child(username).child("picName").setValue(picId);
                         }
                     })
 
@@ -270,9 +291,7 @@ public class ProfileFragment extends Fragment {
     }
 
     private String getUsername(String email) {
-
         return (email.substring(0, email.indexOf("@")));
-
     }
 
 //

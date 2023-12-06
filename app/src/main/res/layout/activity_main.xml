@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         app:tabIconTint="@color/scarlet"
         app:tabIndicatorColor="@color/scarlet"
-        app:tabTextColor="@color/gray">
+        app:tabTextColor="@color/black">
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/profileButton"
@@ -41,6 +41,6 @@
         android:layout_height="match_parent"
         android:id="@+id/viewLayout"
         android:layout_below="@id/tabLayout"
-        android:background="@color/gray"/>
+        android:background="@color/white"/>
 
 </RelativeLayout>
