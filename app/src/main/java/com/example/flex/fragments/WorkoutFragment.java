@@ -112,9 +112,11 @@ public class WorkoutFragment extends Fragment implements View.OnClickListener {
             EditText currAct = activity.get(i);
             EditText currWeight = weight.get(i);
             EditText currReps = reps.get(i);
-            exercises.add(currAct.getText().toString());
-            repsList.add(currReps.getText().toString());
-            weightList.add(currWeight.getText().toString());
+            if(checkInputValidity(currAct.getText().toString(),currReps.getText().toString(),currWeight.getText().toString())) {
+                exercises.add(currAct.getText().toString());
+                repsList.add(currReps.getText().toString());
+                weightList.add(currWeight.getText().toString());
+            }
             i++;
         }
 
@@ -122,6 +124,22 @@ public class WorkoutFragment extends Fragment implements View.OnClickListener {
         curr.setReps(repsList);
         curr.setWeight(weightList);
         return curr;
+    }
+    public boolean checkInputValidity(String exercise, String reps, String weight){
+        if(exercise.isEmpty() || !exercise.matches("[a-zA-Z]+")){
+            return false;
+        } else if(reps.isEmpty()){
+            return false;
+        } else if(exercise.isEmpty()){
+            return false;
+        }
+        try { //will throw exception if the two following are not numeric
+            Double.parseDouble(reps);
+            Double.parseDouble(weight);
+        } catch(NumberFormatException e){
+            return false;
+        }
+        return true;
     }
     public void saveWorkout(Workout curr){
         reference.child("users").child(user.getEmail().substring(0, user.getEmail().indexOf("@"))).child("workouts").child(curr.getTimeOfWorkout().toString()).setValue(curr);
